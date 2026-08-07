@@ -1,9 +1,0 @@
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /products/{productId} {
-      allow read: if true;   // أي زائر يقدر يشوف المنتجات
-      allow write: if true;  // الإضافة/الحذف من واجهة الأدمن المحمية بكلمة سر (راجع ملاحظة الأمان في اقرأني.md)
-    }
-  }
-}

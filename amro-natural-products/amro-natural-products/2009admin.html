@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لوحة تحكم عمرو أبو محمد</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;600;700&family=Tajawal:wght@400;500;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+
+<!-- شاشة الدخول -->
+<div class="login-screen show-flex" id="login-screen">
+  <div class="login-card">
+    <div class="hex-badge">ع</div>
+    <h1>لوحة التحكم</h1>
+    <p class="sub">سجّل الدخول عشان تضيف وتدير المنتجات</p>
+
+    <div class="error-msg" id="login-error"></div>
+
+    <form id="login-form">
+      <div class="field">
+        <label for="login-password">كلمة المرور</label>
+        <input type="password" id="login-password" required autocomplete="current-password" inputmode="numeric">
+      </div>
+      <button type="submit" class="btn btn-gold">دخول</button>
+    </form>
+  </div>
+</div>
+
+<!-- الداشبورد -->
+<div class="admin-app" id="admin-app">
+  <header class="admin-header">
+    <div class="wrap">
+      <div class="title">
+        <div class="hex-badge">ع</div>
+        <div>
+          <h1>لوحة تحكم المنتجات</h1>
+          <p>عمرو أبو محمد للمنتجات الطبيعية</p>
+        </div>
+      </div>
+      <button class="btn btn-outline btn-sm" id="logout-btn" style="color:#FBF4E2;border-color:rgba(251,244,226,0.4);">تسجيل الخروج</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <section class="panel">
+      <h2>إضافة منتج جديد</h2>
+      <p class="panel-sub">هيظهر فورًا في الموقع بعد الإضافة</p>
+
+      <div class="success-msg" id="form-success"></div>
+
+      <form id="product-form">
+        <div class="field">
+          <label for="product-name">اسم المنتج</label>
+          <input type="text" id="product-name" placeholder="مثال: عسل نحل بلدي 1 كيلو" required>
+        </div>
+
+        <div class="field">
+          <label for="product-description">وصف المنتج</label>
+          <textarea id="product-description" rows="3" placeholder="اكتب وصف بسيط للمنتج..."></textarea>
+        </div>
+
+        <div class="field">
+          <label>صورة المنتج</label>
+          <div class="image-drop" id="image-drop">
+            <img id="image-preview" style="display:none;">
+            <span>دوس هنا وارفع صورة من موبايلك</span>
+            <input type="file" id="product-image" accept="image/*">
+          </div>
+          <div class="progress-bar" id="upload-progress"><span></span></div>
+        </div>
+
+        <button type="submit" class="btn btn-gold" id="submit-btn">إضافة المنتج</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>المنتجات الحالية</h2>
+      <p class="panel-sub">تقدر تحذف أي منتج من هنا</p>
+      <div class="products-table" id="admin-products-list">
+        <div class="empty-state">جاري التحميل…</div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- نافذة تعديل المنتج -->
+<div class="modal-overlay" id="edit-modal">
+  <div class="modal-card">
+    <h2>تعديل المنتج</h2>
+    <div class="success-msg" id="edit-form-success"></div>
+
+    <form id="edit-form">
+      <div class="field">
+        <label for="edit-name">اسم المنتج</label>
+        <input type="text" id="edit-name" required>
+      </div>
+
+      <div class="field">
+        <label for="edit-description">وصف المنتج</label>
+        <textarea id="edit-description" rows="3" placeholder="اكتب وصف بسيط للمنتج..."></textarea>
+      </div>
+
+      <div class="field">
+        <label>صورة المنتج (اتركها زي ما هي لو مش هتغيرها)</label>
+        <div class="image-drop" id="edit-image-drop">
+          <img id="edit-image-preview" style="display:none;">
+          <span>دوس هنا لتغيير الصورة</span>
+          <input type="file" id="edit-image" accept="image/*">
+        </div>
+        <div class="progress-bar" id="edit-upload-progress"><span></span></div>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-outline btn-sm" id="edit-cancel-btn">إلغاء</button>
+        <button type="submit" class="btn btn-gold btn-sm" id="edit-submit-btn">حفظ التعديلات</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script type="module" src="assets/js/admin.js"></script>
+</body>
+</html>
